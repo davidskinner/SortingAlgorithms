@@ -20,26 +20,26 @@ public class Main {
         }
         System.out.println();
 
-        // j is the position of the current position being evaluated
-        // i is the position of the (current position being evaluated - 1)
+        // i is the position of the current position being evaluated
+        // j is the position of the (current position being evaluated - 1)
 
-        for (int j = 1; j < B.length; j++)
+        for (int i = 1; i < B.length; i++)
         {
-            int key = B[j];
+            int key = B[i];
 
-            // insert A[j] into the sorted sequence A[1..j - 1]
-            int i = j -1;
+            // insert A[i] into the sorted sequence A[1..i - 1]
+            int j = i -1;
 
-            //to make insertion sort non-increasing swap "B[i] > key" -> "B[i] < key"
-            while(i >= 0 && B[i] > key)
+            //to make insertion sort non-increasing swap "B[j] > key" -> "B[j] < key"
+            while(j >= 0 && B[j] > key)
             {
-                // swap values for B[i + 1] + B[i]
-                int temp0 = B[i];
-                B[i] = B[i +1];
-                B[i +1] = temp0;
+                // swap values for B[j + 1] and B[j]
+                int temp0 = B[j];
+                B[j] = B[j +1];
+                B[j +1] = temp0;
 
-                i--;
-                B[i + 1] = key;
+                j--;
+                B[j + 1] = key;
             }
         }
 
