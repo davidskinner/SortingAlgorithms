@@ -24,10 +24,23 @@ public class Main {
 
     //Best: 0(n)
     //Worst: omega(n^2)
-//    public static int[] bubbleSort(int[] A)
-//    {
-//
-//    }
+    public static int[] bubbleSort(int[] A)
+    {
+        for (int i = 0; i < A.length-1; i++)
+        {
+            for (int j = A.length-1; j > 0; j--)
+            {
+                if(A[j] < A[j-1])
+                {
+                    //swap A[j] with A[j-1]
+                    int temp = A[j];
+                    A[j] = A[j-1];
+                    A[j-1] = temp;
+                }
+            }
+        }
+        return A;
+    }
 
     //Best: O(n log(n))
     //Worst: omega(n log(n))
@@ -101,9 +114,9 @@ public class Main {
 
         //arrays are reference types
         int[] A = new int[] {2,1,4,5,6,3,8,9};
-        int[] B = new int[] {2,1,4,5,6,3,8,9};
 
 //        printSort(A,insertionSort(B),"Insertion Sort");
 //        printSort(B,mergeSort(B,0,B.length/2,B.length),"Merge Sort");
+        printSort(A,bubbleSort(A),"Bubble Sort");
     }
 }
