@@ -2,46 +2,17 @@ package com.company;
 
 public class Main {
 
-    public static void mergeSort(int[] B) {
+    // A: unsorted array
+    // B: return value of sorting algorithm
+    // name: name of sorting algorithm
+    public static void printSort(int[] A, int[] B, String name){
+        System.out.print(name+"\nunsorted: ");
 
-
-    }
-
-
-    public static void insertionSortNonDecreasing(int[] B ){
-
-        System.out.println("Insertion Sort");
-        System.out.print("unsorted: ");
-
-        for (int bB:
-             B)
+        for (int i: A)
         {
-            System.out.print(bB + " ");
+            System.out.print(i + " ");
         }
         System.out.println();
-
-        // i is the position of the current position being evaluated
-        // j is the position of the (current position being evaluated - 1)
-
-        for (int i = 1; i < B.length; i++)
-        {
-            int key = B[i];
-
-            // insert A[i] into the sorted sequence A[1..i - 1]
-            int j = i -1;
-
-            //to make insertion sort non-increasing swap "B[j] > key" -> "B[j] < key"
-            while(j >= 0 && B[j] > key)
-            {
-                // swap values for B[j + 1] and B[j]
-                int temp0 = B[j];
-                B[j] = B[j +1];
-                B[j +1] = temp0;
-
-                j--;
-                B[j + 1] = key;
-            }
-        }
 
         System.out.print("sorted: ");
 
@@ -51,28 +22,88 @@ public class Main {
         }
     }
 
+    //Best: 0(n)
+    //Worst: omega(n^2)
+//    public static int[] bubbleSort(int[] A)
+//    {
+//
+//    }
+
+    //Best: O(n log(n))
+    //Worst: omega(n log(n))
+    //better than insertion sort for large datasets
+    public static int[] mergeSort(int[] A,int p,int q, int r) {
+
+        int n1 = q - p;
+        int n2 = r - q;
+
+        int[] left = new int[n1];
+        int[] right = new int[n2];
+
+        for (int i = 0; i < n1; i++)
+        {
+            left[i] = A[p + i];
+        }
+
+        for (int i = 0; i < n1; i++)
+        {
+            right[i] = A[q + i];
+        }
+
+        int i = 0;
+        int j = 0;
+
+        for (int k = p; k < r; k++)
+        {
+            if(left[i] <= right[j])
+            {
+                A[k] = left[i];
+                i++;
+            }
+            else{
+                A[k] = right[j];
+                j++;
+            }
+            
+        }
+
+        return A;
+    }
+
+    //Best:  O(n)
+    //Worst: omega(n^2)
+    private static int[] insertionSort(int[] intArray){
+
+        // i is the position of the current position being evaluated
+        // j is the position of the (current position being evaluated - 1)
+        for (int i = 1; i < intArray.length; i++)
+        {
+            int current = intArray[i];
+            int j = i -1;
+
+            //to make insertion sort non-increasing swap "intArray[j] > current" -> "intArray[j] < current"
+            while(j >= 0 && intArray[j] > current)
+            {
+                // swap values for intArray[j + 1] and intArray[j]
+                int temp = intArray[j];//
+                intArray[j] = intArray[j +1];
+                intArray[j + 1] = temp;
+
+                //move to the left in the sorted array
+                j--;
+                intArray[j + 1] = current;
+            }
+        }
+        return intArray;
+    }
+
     public static void main(String[] args) {
 
-        //Insertion Sort
+        //arrays are reference types
+        int[] A = new int[] {2,1,4,5,6,3,8,9};
+        int[] B = new int[] {2,1,4,5,6,3,8,9};
 
-        //swap the position of 2 numbers all the way to the correct position
-
-        //integer array
-
-        int A[] =  {2,1,4,5,6,3};
-
-        insertionSortNonDecreasing(A);
-//
-//        if(A[1] < A[0])
-//        {
-//            int temp0 = A[0];
-//            A[0] = A[1];
-//            A[1] = temp0;
-//        }
-//
-//        for (int j = 0; j < A.length; j++)
-//        {
-//            System.out.println(A[j]);
-//        }
+//        printSort(A,insertionSort(B),"Insertion Sort");
+//        printSort(B,mergeSort(B,0,B.length/2,B.length),"Merge Sort");
     }
 }
