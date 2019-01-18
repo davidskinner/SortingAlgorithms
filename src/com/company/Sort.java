@@ -11,6 +11,11 @@ public class Sort
 		System.out.println();
 	}
 
+	public static void log(String val)
+	{
+		System.out.println(val);
+	}
+
 	public static String buildString(int[] A)
 	{
 		StringBuilder sb = new StringBuilder();
@@ -118,8 +123,8 @@ public class Sort
 		//do the last step
 		merge(a,left,right);
 
-		print(name,b,a);
-		System.out.println(buildString(a));
+//		print(name,b,a);
+//		System.out.println(buildString(a));
 //		return b;
 	}
 
@@ -155,11 +160,13 @@ public class Sort
 			a[k] = l[i];
 			k++;
 			i++;
+//			log(buildString(a));
 		}
 		while (j < right) {
 			a[k] = r[j];
 			k++;
 			j++;
+//			log(buildString(a));
 		}
 	}
 }
