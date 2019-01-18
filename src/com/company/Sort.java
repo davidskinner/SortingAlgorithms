@@ -78,11 +78,17 @@ public class Sort
 		return tempArray;
 	}
 
+	//	source : https://www.baeldung.com/java-merge-sort
 	//Best: O(n log(n))
 	//Worst: omega(n log(n))
 	//better than insertion sort for large datasets
-	public void mergeSort(int[] a, int n) {
-		System.out.println(buildString(a));
+	public void mergeSort(int[] a) {
+//		System.out.println(buildString(a));
+		String name = "Merge Sort";
+
+		int n = a.length;
+		int[] b = a.clone();
+
 		if(n < 2)
 		{
 			return;
@@ -103,14 +109,16 @@ public class Sort
 		}
 
 		//sort the left half
-		mergeSort(left,mid);
+		mergeSort(left);
 
 		//sort the right half
-		mergeSort(right, n - mid);
+		mergeSort(right);
 
 		//do the last step
 		merge(a,left,right,mid,n-mid);
-		System.out.println(buildString(a));
+
+		print(name,b,a);
+//		System.out.println(buildString(a));
 	}
 
 	private void merge(int[] a, int[] l, int[] r, int left, int right){
