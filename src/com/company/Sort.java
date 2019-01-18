@@ -81,39 +81,70 @@ public class Sort
 	//Best: O(n log(n))
 	//Worst: omega(n log(n))
 	//better than insertion sort for large datasets
-	public static int[] mergeSort(int[] intArray,int p,int q, int r) {
-
-		int n1 = q - p;
-		int n2 = r - q;
-
-		int[] left = new int[n1];
-		int[] right = new int[n2];
-
-		for (int i = 0; i < n1; i++)
+	public void mergeSort(int[] a, int n) {
+		System.out.println(buildString(a));
+		if(n < 2)
 		{
-			left[i] = intArray[p + i];
+			return;
 		}
 
-		for (int i = 0; i < n1; i++)
+		int mid = n/2;
+		int[] left = new int[mid];
+		int[] right = new int [n - mid];
+
+		for (int i = 0; i < mid; i++)
 		{
-			right[i] = intArray[q + i];
+			left[i] = a[i];
 		}
 
+		for (int i = mid; i < n ; i++)
+		{
+			right[i - mid] = a[i];
+		}
+
+		//sort the left half
+		mergeSort(left,mid);
+
+		//sort the right half
+		mergeSort(right, n - mid);
+
+		//do the last step
+		merge(a,left,right,mid,n-mid);
+		System.out.println(buildString(a));
+	}
+
+	private void merge(int[] a, int[] l, int[] r, int left, int right){
+		
 		int i = 0;
 		int j = 0;
+		int k = 0;
 
-		//        for (int k = p; k < r; k++)
-		//        {
-		//            if(left[i] <= right[j])
-		//            {
-		//                intArray[k] = left[i];
-		//                i++;
-		//            }
-		//            else{
-		//                intArray[k] = right[j];
-		//                j++;
-		//            }
-		//        }
-		return intArray;
+		//while we are not to the end of the array lengths
+		while(i < left && j < right)
+		{
+			//determine sort order
+			if(l[i] <= r[j])
+			{
+				a[k] = l[i];
+				k++;
+				i++;
+			}
+			else{
+				a[k] = r[j];
+				k++;
+				j++;
+			}
+		}
+
+		while (i < left) {
+			a[k] = l[i];
+			k++;
+			i++;
+		}
+		while (j < right) {
+			a[k] = r[j];
+			k++;
+			j++;
+		}
 	}
 }

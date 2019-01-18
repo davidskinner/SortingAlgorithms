@@ -10,6 +10,6 @@ public class Main {
 
         sort.insertionSort(A);
         sort.bubbleSort(A);
-
+        sort.mergeSort(A,A.length);
     }
 }
