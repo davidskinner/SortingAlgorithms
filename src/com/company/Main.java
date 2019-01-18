@@ -11,5 +11,7 @@ public class Main {
         sort.insertionSort(A);
         sort.bubbleSort(A);
         sort.mergeSort(A);
+
+//            System.out.println(Sort.buildString(sort.mergeSort(A)));
     }
 }

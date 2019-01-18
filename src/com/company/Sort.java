@@ -84,6 +84,7 @@ public class Sort
 	//better than insertion sort for large datasets
 	public void mergeSort(int[] a) {
 //		System.out.println(buildString(a));
+
 		String name = "Merge Sort";
 
 		int n = a.length;
@@ -115,17 +116,23 @@ public class Sort
 		mergeSort(right);
 
 		//do the last step
-		merge(a,left,right,mid,n-mid);
+		merge(a,left,right);
 
 		print(name,b,a);
-//		System.out.println(buildString(a));
+		System.out.println(buildString(a));
+//		return b;
 	}
 
-	private void merge(int[] a, int[] l, int[] r, int left, int right){
+	// a is the array that is getting written over
+	// l is the left array
+	// r is the right array
+	private void merge(int[] a, int[] l, int[] r){
 		
 		int i = 0;
 		int j = 0;
 		int k = 0;
+		int left = l.length;
+		int right = r.length;
 
 		//while we are not to the end of the array lengths
 		while(i < left && j < right)
