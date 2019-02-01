@@ -9,8 +9,8 @@ public class Main {
         Sort sort = new Sort();
 
         sort.insertionSort(A);
-        sort.bubbleSort(A);
-        sort.mergeSort(A);
+//        sort.bubbleSort(A);
+//        sort.mergeSort(A);
 
 //            System.out.println(Sort.buildString(sort.mergeSort(A)));
     }

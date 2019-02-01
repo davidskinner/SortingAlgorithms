@@ -51,7 +51,6 @@ public class Sort
 
 				//move to the left in the sorted array
 				j--;
-				tempArray[j + 1] = current;
 			}
 		}
 
